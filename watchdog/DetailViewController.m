@@ -30,6 +30,11 @@
     self.serverAddressText.text = self.server.address;
     self.timeoutText.text = self.server.timeout;
     self.lastCheckedText.text = [self.server getLastCheckString];
+    if(self.server.successful){
+        self.lastCheckedText.textColor = [UIColor greenColor];
+    } else {
+        self.lastCheckedText.textColor = [UIColor redColor];
+    }
 }
 
 - (void)viewDidLoad {

@@ -2,7 +2,7 @@
 //  TypeSelectorController.m
 //  watchdog
 //
-//  Created by Erik Mårtensson on 04/01/16.
+//  Created by Erik Mårtensson.
 //  Copyright (c) 2016 None. All rights reserved.
 //
 

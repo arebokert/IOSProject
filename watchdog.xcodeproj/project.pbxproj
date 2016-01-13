@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		034C051D1C3B1E6D0081E464 /* TypeSelectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034C051C1C3B1E6D0081E464 /* TypeSelectorController.m */; };
 		034C05211C3B35AB0081E464 /* TimeSelectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034C05201C3B35AB0081E464 /* TimeSelectorController.m */; };
-		034C05241C3B8C420081E464 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 034C05231C3B8C420081E464 /* Timer.m */; };
 		03CC2AF11C388079005513AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2AF01C388079005513AD /* main.m */; };
 		03CC2AF41C388079005513AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2AF31C388079005513AD /* AppDelegate.m */; };
 		03CC2AF71C388079005513AD /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2AF61C388079005513AD /* MasterViewController.m */; };
@@ -21,6 +20,7 @@
 		03D046301C39AEF70030DC12 /* NewServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D0462F1C39AEF70030DC12 /* NewServerController.m */; };
 		03D046321C39AF360030DC12 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D046311C39AF360030DC12 /* Server.m */; };
 		03EB252A1C45FEC60018FEF5 /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB25291C45FEC60018FEF5 /* Socket.m */; };
+		03EB252E1C4685840018FEF5 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB252D1C4685840018FEF5 /* Storage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +38,6 @@
 		034C051C1C3B1E6D0081E464 /* TypeSelectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeSelectorController.m; sourceTree = "<group>"; };
 		034C05201C3B35AB0081E464 /* TimeSelectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSelectorController.m; sourceTree = "<group>"; };
 		034C05221C3B35B90081E464 /* TimeSelectorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeSelectorController.h; sourceTree = "<group>"; };
-		034C05231C3B8C420081E464 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
-		034C05251C3B8C4B0081E464 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		03CC2AEB1C388079005513AD /* watchdog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchdog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CC2AEF1C388079005513AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03CC2AF01C388079005513AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -61,6 +59,8 @@
 		03D046331C39AF450030DC12 /* Server.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
 		03EB25291C45FEC60018FEF5 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
 		03EB252B1C45FED00018FEF5 /* Socket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		03EB252C1C4685770018FEF5 /* Storage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
+		03EB252D1C4685840018FEF5 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,10 +162,10 @@
 			children = (
 				03D046311C39AF360030DC12 /* Server.m */,
 				03D046331C39AF450030DC12 /* Server.h */,
-				034C05231C3B8C420081E464 /* Timer.m */,
-				034C05251C3B8C4B0081E464 /* Timer.h */,
 				03EB25291C45FEC60018FEF5 /* Socket.m */,
 				03EB252B1C45FED00018FEF5 /* Socket.h */,
+				03EB252C1C4685770018FEF5 /* Storage.h */,
+				03EB252D1C4685840018FEF5 /* Storage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				03CC2AF71C388079005513AD /* MasterViewController.m in Sources */,
 				03CC2AF11C388079005513AD /* main.m in Sources */,
 				03D046321C39AF360030DC12 /* Server.m in Sources */,
-				034C05241C3B8C420081E464 /* Timer.m in Sources */,
+				03EB252E1C4685840018FEF5 /* Storage.m in Sources */,
 				03CC2AFA1C388079005513AD /* DetailViewController.m in Sources */,
 				034C05211C3B35AB0081E464 /* TimeSelectorController.m in Sources */,
 			);

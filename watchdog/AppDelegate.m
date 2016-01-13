@@ -10,15 +10,14 @@
 #import "DetailViewController.h"
 #import "MasterViewController.h"
 #import "Server.h"
-#import "Timer.h"
+#import "Socket.h"
+#import "Storage.h"
 
 @implementation AppDelegate
 
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
-    
-    NSLog(@"Fetch started");
-    NSLog(@"Background fetch started...");
+    NSLog(@"Background fetch started.");
     
     UINavigationController *rootController = (UINavigationController *)self.window.rootViewController;
     MasterViewController *masterViewController;
@@ -30,34 +29,38 @@
                         masterViewController = (MasterViewController *)view2;
         }
     }
-    NSLog([[masterViewController.servers objectAtIndex:0] getLastCheckString]);
     
-    if([[masterViewController.servers objectAtIndex:0] timeoutPassed]){
-        Server *tempServer = [masterViewController.servers objectAtIndex:0];
-        NSDate *cur = [NSDate date];
-        [tempServer setLastCheck:cur];
-        [masterViewController saveSettings];
-        NSLog(@"Check was made.");
-    } else {
-        NSLog(@"Check was not made.");
+    Boolean successful = false;
+    
+    for(Server *server in [masterViewController.storage getServers]){
+        if([server timeoutPassed]){
+            Socket *conn = [[Socket alloc] initSocketWithIPAndPort:@"192.168.1.150" port:24070];
+            successful = [conn checkServer:server];
+            NSDate *cur = [NSDate date];
+            [server setLastCheck:cur];
+            server.successful = successful;
+            [masterViewController.storage saveServers];
+            if(server.successful == false){
+                NSString *tempString = @"Server did not respond! Host: ";
+                [self showAlertForError:[tempString stringByAppendingString:server.title]];
+            }
+            NSLog(@"Check was made.");
+        } else {
+            NSLog(@"Check was not made.");
+        }
     }
     
-    BOOL downloadSuccessful = YES;
-    
-    if (downloadSuccessful) {
-        //---set the flag that data is successfully downloaded---
-        completionHandler(UIBackgroundFetchResultNewData);
-    } else {
-        //---set the flag that download is not successful---
-        completionHandler(UIBackgroundFetchResultFailed);
-    }
+    completionHandler(UIBackgroundFetchResultNewData);
     
     NSLog(@"Background fetch completed...");
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     // Override point for customization after application launch.
-    NSLog(@"Launched in background %d", UIApplicationStateBackground == application.applicationState);
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
     [[UIApplication sharedApplication]
      setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -67,6 +70,7 @@
     return YES;
 }
 
+/*
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -88,6 +92,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+ */
 
 #pragma mark - Split view
 
@@ -100,4 +105,13 @@
     }
 }
 
+- (void)showAlertForError:(NSString*)error {
+    UILocalNotification *errorNotification = [[UILocalNotification alloc] init];
+    errorNotification.alertBody = error;
+    errorNotification.soundName = UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:errorNotification];
+}
+
 @end
+

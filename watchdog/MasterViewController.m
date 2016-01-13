@@ -10,8 +10,8 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "NewServerController.h"
+#import "Storage.h"
 #import "Server.h"
-#import "Timer.h"
 
 @implementation MasterViewController
 
@@ -25,14 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", @"Testmessage");
-    self.settings = [NSUserDefaults standardUserDefaults];
-    @try {
-        self.servers = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:[self.settings objectForKey:@"Servers"]]];
-    } @catch ( NSException *ex ) {
-        NSLog(@"%@", [ex callStackSymbols]);
-    }
-    
+    self.storage = [[Storage alloc] init];
+    [self.storage getServers];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
@@ -50,10 +44,9 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Server *server = self.servers[indexPath.row];
+        Server *server = [self.storage getServers][indexPath.row];
         DetailViewController *control = (DetailViewController *)[segue.destinationViewController topViewController];
         control.server = server;
-        //[control setLabelsWithServer:server];
         
         
         // Splitview configuration
@@ -69,13 +62,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.servers.count;
+    return [self.storage getServers].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    Server* server = self.servers[indexPath.row];
+    Server* server = [self.storage getServers][indexPath.row];
     cell.textLabel.text = server.title;
     cell.detailTextLabel.text = server.address;
     
@@ -85,15 +78,9 @@
 - (IBAction)backToMainView:(UIStoryboardSegue *)segue{
     NewServerController* controller = segue.sourceViewController;
     Server* temporaryServer = [controller getServerObject];
-    [self.servers addObject:temporaryServer];
-    [self saveSettings];
+    [[self.storage getServers] addObject:temporaryServer];
+    [self.storage saveServers];
     [self.tableView reloadData];
-}
-
-- (void)saveSettings{
-    NSData *tempData = [NSKeyedArchiver archivedDataWithRootObject:self.servers];
-    [self.settings setObject:tempData forKey:@"Servers"];
-    [self.settings synchronize];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,9 +89,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.servers removeObjectAtIndex:indexPath.row];
+        [[self.storage getServers] removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
-        [self saveSettings];
+        [self.storage saveServers];
     }
     
 }

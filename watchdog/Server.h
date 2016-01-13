@@ -16,10 +16,10 @@
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *timeout;
 @property (nonatomic, strong) NSDate *lastCheck;
-@property (nonatomic, assign) BOOL successful;
+@property (nonatomic, assign) Boolean successful;
 
 
-- (instancetype)initServerWithType:(NSString *)type serverTitle:(NSString *)title serverAddress:(NSString *)address maxTimeout:(NSString *)timeout;
+-(instancetype)initServerWithType:(NSString *)type serverTitle:(NSString *)title serverAddress:(NSString *)address maxTimeout:(NSString *)timeout;
 -(bool*)timeoutPassed;
 -(NSString*)getLastCheckString;
 -(void)setLastCheck:(NSDate *)lastCheckDate;

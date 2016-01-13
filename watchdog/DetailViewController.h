@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *serverAddressText;
 @property (weak, nonatomic) IBOutlet UILabel *timeoutText;
 @property (strong, nonatomic) Server *server;
-//- (void)setLabelsWithServer:(Server*)server;
 
 @end
 

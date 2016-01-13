@@ -2,7 +2,7 @@
 //  NewServerController.m
 //  watchdog
 //
-//  Created by Erik Mårtensson on 03/01/16.
+//  Created by Erik Mårtensson.
 //  Copyright (c) 2016 None. All rights reserved.
 //
 
@@ -58,6 +58,8 @@
         [self showAlertForError:@"You have to type in an address for the server!"];
     } else if([self.selectDateButton.titleLabel.text isEqualToString:@"Select time"]){
         [self showAlertForError:@"You have to select a timeout before saving!"];
+    } else if([self.selectDateButton.titleLabel.text isEqualToString:@"0"]){
+        [self showAlertForError:@"You may not choose 0 as interval!"];
     } else {
         [self performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
     }

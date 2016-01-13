@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Server.h"
-#import "Timer.h"
 
 @implementation Server
 
@@ -19,6 +18,7 @@
         self.address = address;
         self.timeout = timeout;
         self.lastCheck = [NSDate date];
+        self.successful = true;
     }
     return self;
 }
@@ -30,6 +30,7 @@
         self.address = [decoder decodeObjectForKey:@"address"];
         self.timeout = [decoder decodeObjectForKey:@"timeout"];
         self.lastCheck = [decoder decodeObjectForKey:@"lastCheck"];
+        self.successful = [decoder decodeBoolForKey:@"successful"];
     }
     return self;
 }
@@ -40,6 +41,7 @@
     [encoder encodeObject:self.address forKey:@"address"];
     [encoder encodeObject:self.timeout forKey:@"timeout"];
     [encoder encodeObject:self.lastCheck forKey:@"lastCheck"];
+    [encoder encodeBool:self.successful forKey:@"successful"];
 }
 
 - (bool*)timeoutPassed{
