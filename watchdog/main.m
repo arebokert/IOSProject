@@ -2,7 +2,7 @@
 //  main.m
 //  watchdog
 //
-//  Created by Erik Mårtensson on 02/01/16.
+//  Created by Erik Mårtensson.
 //  Copyright (c) 2016 None. All rights reserved.
 //
 
