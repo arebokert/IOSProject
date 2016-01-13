@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034C051D1C3B1E6D0081E464 /* TypeSelectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034C051C1C3B1E6D0081E464 /* TypeSelectorController.m */; };
+		034C05211C3B35AB0081E464 /* TimeSelectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034C05201C3B35AB0081E464 /* TimeSelectorController.m */; };
+		034C05241C3B8C420081E464 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 034C05231C3B8C420081E464 /* Timer.m */; };
 		03CC2AF11C388079005513AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2AF01C388079005513AD /* main.m */; };
 		03CC2AF41C388079005513AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2AF31C388079005513AD /* AppDelegate.m */; };
 		03CC2AF71C388079005513AD /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2AF61C388079005513AD /* MasterViewController.m */; };
@@ -15,6 +18,9 @@
 		03CC2AFF1C388079005513AD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CC2AFE1C388079005513AD /* Images.xcassets */; };
 		03CC2B021C388079005513AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03CC2B001C388079005513AD /* LaunchScreen.xib */; };
 		03CC2B0E1C388079005513AD /* watchdogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC2B0D1C388079005513AD /* watchdogTests.m */; };
+		03D046301C39AEF70030DC12 /* NewServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D0462F1C39AEF70030DC12 /* NewServerController.m */; };
+		03D046321C39AF360030DC12 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D046311C39AF360030DC12 /* Server.m */; };
+		03EB252A1C45FEC60018FEF5 /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB25291C45FEC60018FEF5 /* Socket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		034C051B1C3B1E590081E464 /* TypeSelectorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeSelectorController.h; sourceTree = "<group>"; };
+		034C051C1C3B1E6D0081E464 /* TypeSelectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeSelectorController.m; sourceTree = "<group>"; };
+		034C05201C3B35AB0081E464 /* TimeSelectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSelectorController.m; sourceTree = "<group>"; };
+		034C05221C3B35B90081E464 /* TimeSelectorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeSelectorController.h; sourceTree = "<group>"; };
+		034C05231C3B8C420081E464 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		034C05251C3B8C4B0081E464 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		03CC2AEB1C388079005513AD /* watchdog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchdog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CC2AEF1C388079005513AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03CC2AF01C388079005513AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,6 +55,12 @@
 		03CC2B071C388079005513AD /* watchdogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = watchdogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CC2B0C1C388079005513AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03CC2B0D1C388079005513AD /* watchdogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = watchdogTests.m; sourceTree = "<group>"; };
+		03D0462E1C39AEC00030DC12 /* NewServerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewServerController.h; sourceTree = "<group>"; };
+		03D0462F1C39AEF70030DC12 /* NewServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewServerController.m; sourceTree = "<group>"; };
+		03D046311C39AF360030DC12 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		03D046331C39AF450030DC12 /* Server.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		03EB25291C45FEC60018FEF5 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
+		03EB252B1C45FED00018FEF5 /* Socket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +102,8 @@
 		03CC2AED1C388079005513AD /* watchdog */ = {
 			isa = PBXGroup;
 			children = (
-				03CC2AF21C388079005513AD /* AppDelegate.h */,
-				03CC2AF31C388079005513AD /* AppDelegate.m */,
-				03CC2AF51C388079005513AD /* MasterViewController.h */,
-				03CC2AF61C388079005513AD /* MasterViewController.m */,
-				03CC2AF81C388079005513AD /* DetailViewController.h */,
-				03CC2AF91C388079005513AD /* DetailViewController.m */,
+				03D0462D1C39A83F0030DC12 /* Model */,
+				03D0462C1C39A8350030DC12 /* Controller */,
 				03CC2AFB1C388079005513AD /* Main.storyboard */,
 				03CC2AFE1C388079005513AD /* Images.xcassets */,
 				03CC2B001C388079005513AD /* LaunchScreen.xib */,
@@ -101,6 +115,8 @@
 		03CC2AEE1C388079005513AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03CC2AF21C388079005513AD /* AppDelegate.h */,
+				03CC2AF31C388079005513AD /* AppDelegate.m */,
 				03CC2AEF1C388079005513AD /* Info.plist */,
 				03CC2AF01C388079005513AD /* main.m */,
 			);
@@ -122,6 +138,36 @@
 				03CC2B0C1C388079005513AD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03D0462C1C39A8350030DC12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03CC2AF51C388079005513AD /* MasterViewController.h */,
+				03CC2AF61C388079005513AD /* MasterViewController.m */,
+				03CC2AF81C388079005513AD /* DetailViewController.h */,
+				03CC2AF91C388079005513AD /* DetailViewController.m */,
+				03D0462E1C39AEC00030DC12 /* NewServerController.h */,
+				03D0462F1C39AEF70030DC12 /* NewServerController.m */,
+				034C051B1C3B1E590081E464 /* TypeSelectorController.h */,
+				034C051C1C3B1E6D0081E464 /* TypeSelectorController.m */,
+				034C05201C3B35AB0081E464 /* TimeSelectorController.m */,
+				034C05221C3B35B90081E464 /* TimeSelectorController.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		03D0462D1C39A83F0030DC12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03D046311C39AF360030DC12 /* Server.m */,
+				03D046331C39AF450030DC12 /* Server.h */,
+				034C05231C3B8C420081E464 /* Timer.m */,
+				034C05251C3B8C4B0081E464 /* Timer.h */,
+				03EB25291C45FEC60018FEF5 /* Socket.m */,
+				03EB252B1C45FED00018FEF5 /* Socket.h */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +219,11 @@
 				TargetAttributes = {
 					03CC2AEA1C388079005513AD = {
 						CreatedOnToolsVersion = 6.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					03CC2B061C388079005513AD = {
 						CreatedOnToolsVersion = 6.3;
@@ -224,10 +275,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03EB252A1C45FEC60018FEF5 /* Socket.m in Sources */,
+				03D046301C39AEF70030DC12 /* NewServerController.m in Sources */,
 				03CC2AF41C388079005513AD /* AppDelegate.m in Sources */,
+				034C051D1C3B1E6D0081E464 /* TypeSelectorController.m in Sources */,
 				03CC2AF71C388079005513AD /* MasterViewController.m in Sources */,
 				03CC2AF11C388079005513AD /* main.m in Sources */,
+				03D046321C39AF360030DC12 /* Server.m in Sources */,
+				034C05241C3B8C420081E464 /* Timer.m in Sources */,
 				03CC2AFA1C388079005513AD /* DetailViewController.m in Sources */,
+				034C05211C3B35AB0081E464 /* TimeSelectorController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +413,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = watchdog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -366,8 +425,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = watchdog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -424,6 +485,7 @@
 				03CC2B131C388079005513AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03CC2B141C388079005513AD /* Build configuration list for PBXNativeTarget "watchdogTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +494,7 @@
 				03CC2B161C388079005513AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

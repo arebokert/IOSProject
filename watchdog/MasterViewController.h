@@ -2,18 +2,22 @@
 //  MasterViewController.h
 //  watchdog
 //
-//  Created by Erik Mårtensson on 02/01/16.
+//  Created by Erik Mårtensson.
 //  Copyright (c) 2016 None. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <NSCoding>
+
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) NSMutableArray *servers;
+@property (strong, nonatomic) NSUserDefaults *settings;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+
+- (void)saveSettings;
 
 @end
 

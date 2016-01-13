@@ -2,22 +2,64 @@
 //  AppDelegate.m
 //  watchdog
 //
-//  Created by Erik Mårtensson on 02/01/16.
+//  Created by Erik Mårtensson.
 //  Copyright (c) 2016 None. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "DetailViewController.h"
-
-@interface AppDelegate () <UISplitViewControllerDelegate>
-
-@end
+#import "MasterViewController.h"
+#import "Server.h"
+#import "Timer.h"
 
 @implementation AppDelegate
 
+- (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
+    
+    NSLog(@"Fetch started");
+    NSLog(@"Background fetch started...");
+    
+    UINavigationController *rootController = (UINavigationController *)self.window.rootViewController;
+    MasterViewController *masterViewController;
+    if (rootController.viewControllers){
+        for (UINavigationController *view in rootController.viewControllers) {
+            if ([view isKindOfClass:[UINavigationController class]])
+                for (UIViewController *view2 in view.viewControllers)
+                    if ([view2 isKindOfClass:[MasterViewController class]])
+                        masterViewController = (MasterViewController *)view2;
+        }
+    }
+    NSLog([[masterViewController.servers objectAtIndex:0] getLastCheckString]);
+    
+    if([[masterViewController.servers objectAtIndex:0] timeoutPassed]){
+        Server *tempServer = [masterViewController.servers objectAtIndex:0];
+        NSDate *cur = [NSDate date];
+        [tempServer setLastCheck:cur];
+        [masterViewController saveSettings];
+        NSLog(@"Check was made.");
+    } else {
+        NSLog(@"Check was not made.");
+    }
+    
+    BOOL downloadSuccessful = YES;
+    
+    if (downloadSuccessful) {
+        //---set the flag that data is successfully downloaded---
+        completionHandler(UIBackgroundFetchResultNewData);
+    } else {
+        //---set the flag that download is not successful---
+        completionHandler(UIBackgroundFetchResultFailed);
+    }
+    
+    NSLog(@"Background fetch completed...");
+}
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     // Override point for customization after application launch.
+    NSLog(@"Launched in background %d", UIApplicationStateBackground == application.applicationState);
+    [[UIApplication sharedApplication]
+     setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
